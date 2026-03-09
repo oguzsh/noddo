@@ -62,13 +62,13 @@ pub fn setup_tray(app: &App) -> Result<(), Box<dyn std::error::Error>> {
                     state.set_tray_rect(tray_pos).await;
                 });
 
-                if let Some(win) = app.get_webview_window("permission") {
-                    if win.is_visible().unwrap_or(false) {
-                        let _ = win.hide();
-                    } else {
+                if window::is_panel_visible(&app) {
+                    window::hide_panel(&app);
+                } else {
+                    if let Some(win) = app.get_webview_window("permission") {
                         window::position_below_tray(&win, &tray_pos);
-                        window::show_and_focus(&win);
                     }
+                    window::show_panel(&app);
                 }
             }
         })

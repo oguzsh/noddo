@@ -1,4 +1,4 @@
-use tauri::{Manager, State};
+use tauri::State;
 
 use crate::models::{DecisionAction, PermissionDecision, PermissionRequest};
 use crate::state::AppState;
@@ -38,9 +38,7 @@ pub async fn resolve_permission(
     // Hide window if no more pending requests
     let remaining = state.get_pending_requests().await;
     if remaining.is_empty() {
-        if let Some(window) = app.get_webview_window("permission") {
-            let _ = window.hide();
-        }
+        crate::window::hide_panel(&app);
     }
 
     Ok(())
@@ -66,9 +64,7 @@ pub async fn dismiss_request(
 
     let remaining = state.get_pending_requests().await;
     if remaining.is_empty() {
-        if let Some(window) = app.get_webview_window("permission") {
-            let _ = window.hide();
-        }
+        crate::window::hide_panel(&app);
     }
 
     Ok(())
