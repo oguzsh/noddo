@@ -44,7 +44,7 @@ Add this to your `~/.claude/settings.json`:
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "",
+        "matcher": "Bash|Read|Write|Edit",
         "hooks": [
           {
             "type": "command",
@@ -57,11 +57,13 @@ Add this to your `~/.claude/settings.json`:
 }
 ```
 
-The empty `matcher` fires for every tool use. If Noddo isn't running, `|| true` makes the hook exit silently and Claude falls back to its normal terminal prompt.
+The `matcher` is a regex against the tool name — this config only prompts for file reads, writes, edits, and command execution. Tools like Glob, Grep, and Agent pass through without prompting. If Noddo isn't running, `|| true` makes the hook exit silently and Claude falls back to its normal terminal prompt.
+
+To prompt for **all** tools, set `"matcher": ""`.
 
 ### 3. Start a new Claude Code session
 
-Every tool use (Bash, Edit, Write, etc.) will now route through Noddo.
+Bash, Read, Write, and Edit calls will now route through Noddo.
 
 ## Build from source
 
