@@ -4,6 +4,10 @@ A system tray app that intercepts Claude Code's permission prompts and displays 
 
 Works over full-screen apps, doesn't steal focus, no dock icon.
 
+
+<img width="384" height="238" alt="image" src="https://github.com/user-attachments/assets/a77f7d1d-956c-4ede-b17e-6cefd4779faa" />
+
+
 ## How it works
 
 ```
