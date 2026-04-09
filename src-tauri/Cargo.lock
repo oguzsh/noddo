@@ -2053,6 +2053,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "monitor"
+version = "0.1.0"
+source = "git+https://github.com/ahkohd/tauri-toolkit?branch=v2#dee384d1f9c3ecdc7ce80966fa23e752056812ae"
+dependencies = [
+ "cocoa",
+ "core-foundation",
+ "core-graphics 0.24.0",
+ "objc",
+ "serde",
+ "tauri",
+ "thiserror 2.0.18",
+]
+
+[[package]]
 name = "muda"
 version = "0.17.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2115,6 +2129,7 @@ version = "0.1.0"
 dependencies = [
  "axum",
  "chrono",
+ "monitor",
  "serde",
  "serde_json",
  "tauri",
